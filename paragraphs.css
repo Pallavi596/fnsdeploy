@@ -1,0 +1,12 @@
+p{
+    border: 1px solid grey;
+    display:inline-block;
+    padding:20px;
+    margin:20px;
+    border-radius:20px;
+    text-align:justify;
+    color:white;
+    background: linear-gradient(45deg,black,white);
+    box-shadow:0px,0px,10px greenyellow;
+    width:20%;
+}
