@@ -1,0 +1,17 @@
+ul,ol{
+    background-color: aliceblue;
+    display:inline-block;
+    width:15%;
+    margin:20px;
+    padding:10px;
+    border-radius: 20px;
+}
+li{
+    background-color: aqua;
+    padding: 10px;
+    margin:10px;
+    border-radius: 10px;
+}
+li:hover{
+    background-color: blanchedalmond;
+}

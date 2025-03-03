@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .parent{
+                display:flex;
+                height:100vh;
+                align-items: center;
+            }
+            .item1{
+                flex:1;
+                height:100vh;
+                background-image: url("download.jpeg");
+                background-repeat: no-repeat;
+                background-position:center center ;
+            }
+            .item2{
+                flex:1;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .info1{
+                font-size: 30px;
+            }
+            .info2,.info3,.info4,.info5{
+                font-size: 20px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div parent="class">
+            <div class="item1"></div>
+            <div class="item2">
+                <p class="info1">Finishing School</p>
+                <p class="info2">Cyber Towers</p>
+                <p class="info3">HI-Tech city</p>
+                <p class="info4">Hyderabad</p>
+                <p class="info5">500081</p>
+            </div>
+        </div>
+    </body>
+</html>

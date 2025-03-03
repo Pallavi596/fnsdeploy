@@ -1,0 +1,11 @@
+form{
+    color:black;
+    background-color: aquamarine;
+    border-width:20px;
+    margin:auto;
+}
+fieldset{
+    text-align: justify;
+    width: 50%;
+    margin:auto
+}

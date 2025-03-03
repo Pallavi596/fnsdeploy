@@ -6,7 +6,7 @@ p{
     border-radius:20px;
     text-align:justify;
     color:white;
-    background: linear-gradient(45deg,black,white);
+    background: linear-gradient(35deg,red,black,green);
     box-shadow:0px,0px,10px greenyellow;
     width:20%;
 }

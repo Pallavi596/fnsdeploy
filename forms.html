@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head><title>FORMS</title>
+    <link rel="stylesheet" href="forms.css"></head>
+    <body>
+        <fieldset>
+            <legend>Registration Form</legend>
+            <form name="regname">
+            <table>
+                <!---First name-->
+                <tr>
+                    <td>First name</td>
+                    <td><input type="text" name="User first name" placeholder="enter first name"></td>
+                    <td><span>(****enter valid first name****)</span></td>
+                </tr>
+                <!---last name-->
+                <tr>
+                    <td>last name</td>
+                    <td><input type="text" name="User last name" placeholder="enter last name"></td>
+                    <td><span>(****enter valid last name****)</span></td>
+                </tr>
+                <!---email-->
+                <tr>
+                    <td>email</td>
+                    <td><input type="text" name="User email" placeholder="enter email"></td>
+                    <td><span>(****enter valid email****)</span></td>
+                </tr>
+                <tr>
+                    <td>last name</td>
+                    <td><input type="text" name="User last name" placeholder="enter last name"></td>
+                    <td><span>(****enter valid last name****)</span></td>
+                <!---Phone Number-->
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="tel" name="user phone no" placeholder="enter phone no"></td>
+                    <td><span>(***enter valid phone no***)</span></td>
+                </tr>
+                <!---password-->
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="User Password" placeholder="enterUser Password"></td>
+                    <td><span>(****enter valid last name****)</span></td>
+                </tr>
+                <!---age-->
+                <tr>
+                    <td>age</td>
+                    <td><input type="number" name="User age" placeholder="enter age"></td>
+                    <td><span>(****enter valid age****)</span></td>
+                </tr>
+                <!---gender-->
+                <tr>
+                    <td>gender</td>
+                    <td><input type="radio" name="gender" value="male">male
+                        <input type="radio" name="gender" value="female">Female</td>
+                    <td><span>(****select gender****)</span></td>
+                </tr>
+                <!---language-->
+                <tr>
+                    <td>language</td>
+                    <td><input type="checkbox" name="lang" value="C">C LANG
+                    <input type="checkbox" name="lang" value="C++">C++</td>
+
+                    <td><span>(****select language****)</span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox" name="lang" value="Java">Java LANG
+                        <input type="checkbox" name="lang" value="Python">Python LANG</td>
+                    <td></td>
+                </tr>
+                <!---COUNTRY-->
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <select name="country">
+                            <option value="">----select country----</option>
+                            <option value="ind">India</option>
+                            <option value="pak">pakisthan</option>
+                            <option value="bang">bangladesh</option>
+                            <option value="us">USA</option>
+                        </select>
+                    </td>
+                    <td><span>(***SELECT COUNTRY***)</span></td>
+                </tr>
+                <!---Nationality-->
+                <tr>
+                    <td>Nationality</td>
+                    <td>
+                        <select name="nationality">
+                            <option value="">----select nationality----</option>
+                            <option value="ind">Indian</option>
+                            <option value="pak">chinese</option>
+                            <option value="bang">russian</option>
+                            <option value="us">American</option>
+                        </select>
+                    </td>
+                    <td><span>(***SELECT NATIONALITY***)</span></td>
+                    <!---Date-->
+                    <tr>
+                        <td>DOB</td>
+                        <td>
+                            <input type="date" name="userdob" value="enter dob">
+                        </td>
+                        <td><spam>(***DOB***)</spam></td>
+                    </tr>
+                    <!---Colour-->
+                    <tr>
+                        <td>Favcolour</td>
+                        <td>
+                            <input type="color" name="favcolor" value="select fav color">
+                        </td>
+                        <td><spam>(***colour***)</spam></td>
+                    </tr>
+                    <!----SUBMIT-->
+                    <tr>
+                        <td>
+                            Submit
+                        </td>
+                        <td>
+                            <input type="submit" value="register">
+                        </td>
+                        <td><span>(***SELECT SUBMIT***)</span></td>
+                    </tr>
+                    <!----RESET-->
+                    <tr>
+                        <td>
+                            Reset
+                        </td>
+                        <td>
+                            <input type="reset" value="cancel">
+                        </td>
+                        <td><span>(***SELECT RESET***)</span></td>
+            </table>
+            </form>
+        </fieldset>
+    </body>
+</html>
