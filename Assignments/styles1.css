@@ -1,0 +1,40 @@
+*{
+               
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+.parent{
+    height:100vh;
+    font-weight: 700;
+}
+.header{
+    display: flex;
+    background-color: green;
+    color: white;
+    justify-content: center;
+}
+.nav{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: gold;
+    place-items: center;
+    height:50px;
+    padding: 20px 20px 20px;
+}
+.info1,.info2,.info3,.info4,.info5,.info6{
+    font-weight: bold 4vw;
+    text-align: center;
+}
+.info2{
+    background-color: gold;
+}
+
+option{
+    font-weight:bold;
+}
+
+
+

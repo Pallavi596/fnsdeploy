@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaaradhi Farms</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* Top Shipping Bar */
+        .top-bar {
+            background-color: #1E5631;
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #FFC72C;
+            padding: 10px 5%;
+            position: relative;
+        }
+        .logo img {
+            height: 50px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            position: relative;
+        }
+        .nav-links li {
+           
+            margin: 0 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            padding: 10px;
+        }
+        .nav-links a:hover {
+            color: white;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color:#FFC72C;
+            
+            border-radius: 5px;
+            min-width: 100px;
+            z-index: 10;
+        }
+        .dropdown li {
+            padding: 10px;
+        }
+        .dropdown li a {
+            display: block;
+            padding: 8px;
+            color: black;
+        }
+        .dropdown li a:hover {
+            background-color: #f1b500;
+            color: white;
+        }
+        .nav-links li:hover .dropdown {
+            display: block;
+        }
+        /* Icons */
+        .icons {
+            display: flex;
+            gap: 15px;
+            font-size: 20px;
+            align-items: center;
+        }
+        .icons i {
+            cursor: pointer;
+        }
+        .icons i:hover {
+            color: #333;
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: url('honey-bg.jpg') no-repeat center center/cover;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 5%;
+            color: white;
+            background-image: url(https://vaaradhifarms.com/cdn/shop/files/varadhi_farms_honey_-v1_-_web_final.jpg?v=1733085382&width=2000);
+        }
+        .hero-text {
+            max-width: 400px;
+        }
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .hero-text .price {
+            font-size: 60px;
+            font-weight: bold;
+        }
+        .highlight {
+            font-size: 24px;
+        }
+        .section {
+            background-color: white;
+            padding: 40px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .content h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .content p {
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .button-container 
+        {
+            margin-right: 40px;
+        }
+        .view-all 
+        {
+            background-color: #f4b400;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+        .view-all:hover {
+            background-color: #e0a800;
+        }
+        /* Product Section */
+        .product-section {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            padding: 5px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .price {
+            color: #555;
+        }
+        .reviews {
+            color: #F5A623;
+            font-size: 14px;
+        }
+        /* Quick Add Button */
+        .quick-add {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #166534;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: none;
+        }
+        .product-card:hover .quick-add {
+            display: block;
+        }
+        /* Sold Out Label */
+        .sold-out {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        /* View All Button */
+        .view-all-btn {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .view-all-btn button {
+            background: #FFC72C;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        .view-all-btn button:hover {
+            background: #e6ac00;
+        }
+        /* Explore Our Collections */
+        .collections-section {
+            background-color: #1E5631;
+            color: white;
+            text-align: center;
+            padding: 50px 5%;
+        }
+        .collections-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .collections-section p {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        .collections-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .collection-card {
+            position: relative;
+            width: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .collection-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .collection-label {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            font-size: 18px;
+        }
+        /* View All Button */
+        .view-all-btn {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .view-all-btn button {
+            background: #FFC72C;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        .view-all-btn button:hover {
+            background: #e6ac00;
+        }    
+        .category-container {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .category-item 
+        {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            flex: 1;
+        }
+        .large {
+            flex: 2;
+        }
+
+        .category-item img 
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .right-side 
+        {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+        }
+        .overlay 
+        {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        /* Did You Know Section */
+        .did-you-know {
+        text-align: center;
+        padding: 40px 5%;
+        background-color: white;
+        }
+        .shipping-bar {
+        background-color:  #1E5631;
+        }
+        .ship{
+        color: white;
+        padding:20px 0;
+        font-size: 20px;
+        font-weight: bold;
+        }
+
+        .content1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            
+            
+        }
+
+        .product-img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .text {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .text h3 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .text h1 {
+            font-size: 80px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .text p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-container {
+        display: flex;
+        gap: 40px;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 1000px;
+        margin: auto;
+        }
+        .product-image {
+            width: 50%;
+            background: #b3b3b3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 40px;
+        }
+        .product-image img {
+            width: 80%;
+        }
+        .product-details {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 15px 0;
+        }
+        .quantity-selector 
+        {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .qty-btn 
+        {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #ccc;
+            background: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="text"] {
+            width: 40px;
+            height: 35px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            border-radius: 5px;
+            
+        }
+
+        .add-to-cart {
+            background: #225d37;
+            color: white;
+            font-size: 18px;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 30px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .container2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        
+            width: 100%;
+            gap:20px;
+            padding: 20px;
+            border-radius: 10px;
+            
+          
+            
+        }
+
+        .video-container {
+            width: 48%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            border: none;
+            display: block;
+        }
+
+        .text-container {
+            background-color: #fbb040;
+            padding: 40px;
+            border-radius: 10px;
+            width: 48%;
+            text-align: center;
+            
+        }
+
+        .text-container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            
+        }
+
+        .text-container p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+           
+            margin: auto;
+            background-color: #FFC72C;
+            width: 100%;
+            
+        }
+
+        .footer-column {
+            width: 48%; /* Adjust width to fit content */
+        }
+
+        .footer-column h3 {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        
+        .footer-column ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-column {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    </style>
+    </head>
+    <body>
+
+    <!-- Free Shipping Bar -->
+    <div class="top-bar">
+        Free Shipping On All Orders Above ₹999
+    </div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.avif" alt="Vaaradhi Farms Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">View Collections ▼</a>
+                <ul class="dropdown">
+                    <li><a href="#">Honey</a></li>
+                    <li><a href="#">Spices</a></li>
+                    <li><a href="#">ghee</a></li>
+                    <li><a href="#">Pickles</a></li>
+                    <li><a href="#">Seeds</a></li>
+                    <li><a href="#">sweet_and_snacks</a></li>
+                    <li><a href="#">sweener and salts<a></li>
+                </ul>
+            </li>
+            <li><a href="#">Shop All</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+            
+        
+        <div class="icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+    <!-- Hero Section -->
+    <div class="hero"></div>
+    <div class="section">
+        <div class="content">
+            <h1>Shop Our Customers Favorite</h1>
+            <p>These are Our Best Sellers You'll Fall in Love With Too</p>
+        </div>
+        <div class="button-container">
+            <button class="view-all">View All <span>➜</span></button>
+        </div>
+    </div>
+    <!-- Product Section -->
+    <div class="product-section">
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/Ghee_HighRes.jpg?v=1698928244&width=500" alt="A2 Desi Cow Cultured Ghee">
+            <h3>A2 Desi Cow Cultured Ghee</h3>
+            <p class="price">From Rs. 925.00 <span class="old-price">Rs. 1,000.00</span></p>
+            <p class="reviews">616 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/Honey2.png?v=1698854744&width=500" alt="Farm Fresh Raw Natural Honey">
+            <h3>Farm Fresh Raw Natural Honey</h3>
+            <p class="price">From Rs. 475.00</p>
+            <p class="reviews">2119 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/WhatsAppImage2024-04-26at1.21.52AM.jpg?v=1714074796&width=500" alt="Wild Raw Forest Honey">
+            <h3>Wild Raw Forest Honey</h3>
+            <p class="price">From Rs. 575.00</p>
+            <p class="reviews">505 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/WhatsAppImage2024-03-26at7.23.32PM.jpg?v=1711461650&width=500" alt="Small Bee Forest Honey">
+            <h3>Small Bee Forest Honey</h3>
+            <p class="price">Rs. 1,249.00</p>
+            <p class="reviews">74 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/deepixelstudios_wild_turmeric_powder_in_a_pouch_1080x1080_a5f1c16c-5f91-4fc1-b586-b6b292eb5c21.png?v=1714064248&width=500" alt="Forest Turmeric Powder">
+            <p class="product-name">Forest Turmeric Powder</p>
+            <p class="price">Rs. 300.00</p>
+            <p class="reviews">18 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/Adityark_a_bag_of_a_tan_colored_product_filled_with_turmeric_ki_30bdb482-db0c-4404-8b6c-cb59bec40502.png?v=1685016262&width=500" alt="Unprocessed Natural Turmeric">
+            <span class="quick-add">+ Quick add</span>
+            <p class="product-name">Unprocessed Natural Turmeric</p>
+            <p class="price">From Rs. 199.00</p>
+            <p class="reviews">341 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/WhatsApp_Image_2024-09-24_at_11.20.47_PM.jpg?v=1727416947&width=500" alt="Lakshman Phal Juice">
+            <span class="sold-out">Sold out</span>
+            <p class="product-name">Lakshman Phal Juice</p>
+            <p class="price">Rs. 780.00</p>
+            <p class="reviews">127 reviews ⭐</p>
+        </div>
+        <div class="product-card">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/42bellampowder.png?v=1730945058&width=500" alt="Jaggery Powder">
+            <p class="product-name">Jaggery Powder</p>
+            <p class="price">Rs. 160.00</p>
+            <p class="reviews">17 reviews ⭐</p>
+        </div>
+    </div>
+
+    <!-- View All Button -->
+    <div class="view-all-btn">
+        <button>View All Products</button>
+    </div>
+    <!-- Explore Our Collections Section -->
+    <div class="collections-section">
+        <h2>Explore Our Collections</h2>
+        <p>Find Your Favorites From Our Wide Range of Categories</p>
+        <div class="collections-grid">
+            <div class="collection-card">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/vaaradhi_farms.jpg?v=1733113339&width=500" alt="Lip Balm">
+                <span class="collection-label">Lip Balm</span>
+            </div>
+            <div class="collection-card">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/ecommified_Front-facing_close-up_eye-level_shot_of_a_plain_flat_22ecbd0e-a868-400f-851a-1b171609766c.png?v=1732686759&width=500" alt="Spices">
+                <span class="collection-label">Spices</span>
+            </div>
+            <div class="collection-card">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/pickle_collection_image_-_v1.png?v=1732697129&width=500" alt="Pickles">
+                <span class="collection-label">Pickles</span>
+            </div>
+            <div class="collection-card">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/sweet_and_snacks.jpg?v=1732699427&width=500" alt="Sweets & Snacks">
+                <span class="collection-label">Sweets & Snacks</span>
+            </div>
+        </div>
+        <!-- View All Button -->
+        <div class="view-all-btn">
+            <button>View All Collections</button>
+        </div>
+    </div>
+
+    <div class="category-container">
+        <div class="category-item large ">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/sweetner_and_salts_collection_image_varadhi_farms.jpg?v=1733114639&width=1000" alt="Sweetener and Salts">
+            <div class="overlay">Sweetener and Salts</div>
+        </div>
+        <div class="right-side">
+            <div class="category-item">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/seeds_collection_image_varadhi_farms-1.jpg?v=1733116981&width=1000" alt="Seeds">
+                <div class="overlay">Seeds</div>
+            </div>
+            <div class="category-item ">
+                <img src="https://vaaradhifarms.com/cdn/shop/files/Varadhi_farms_v1_oil_section_image-3.jpg?v=1733085809&width=1000" alt="Oils">
+                <div class="overlay">Oils</div>
+            </div>
+        </div>
+    </div>
+    <!-- Did You Know Section -->
+    <div class="did-you-know">
+        <div class="shipping-bar">
+            <div class="ship">
+                Free Shipping On Orders Above ₹999 &nbsp;&nbsp; | &nbsp;&nbsp; Free Shipping On Orders Above ₹999 &nbsp;&nbsp; | &nbsp;&nbsp; Free Shipping On Orders Above ₹999
+            </div>
+        </div>
+        <div class="content1">
+            <img src="https://vaaradhifarms.com/cdn/shop/files/Honey2.png?v=1698854744&width=600" alt="Natural Honey" class="product-img">
+            <div class="text">
+                <h3>Did You Know?</h3>
+                <h1>90%</h1>
+                <p>of Honey and Ghee’s use is to Enhance Meals.</p>
+            </div>
+            <img src="https://vaaradhifarms.com/cdn/shop/files/Ghee_HighRes.jpg?v=1698928244&width=600" alt="A2 Desi Cow Ghee" class="product-img">
+        </div>
+    </div>
+    <div class="product-container">
+        <div class="product-image">
+            <img src="placeholder.webp" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h1>Product</h1>
+            <p class="price">Rs. 40.00</p>
+            <hr>
+
+            <label for="quantity">Quantity:</label>
+            <div class="quantity-selector">
+                <button class="qty-btn">-</button>
+                <input type="text" id="quantity" value="1">
+                <button class="qty-btn">+</button>
+            </div>
+
+            <button class="add-to-cart">Add to cart</button>
+        </div>
+
+    </div>
+    <div class="container2">
+        <div class="video-container">
+            <iframe  
+                src="https://www.youtube.com/embed/KTd84z8Qc9M?list=TLGGccLAni-9fjIwNTAzMjAyNQ" 
+                title="Vaaradhifarms store tour | 9390605720 | 100% organic products" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div class="text-container">
+            <h2>About Us</h2>
+            <p>Welcome to Vaaradhi Farms! I am Nethra and I am extremely passionate about healthy living and sustainable food practices.</p>
+            <p>I am committed to making a positive impact on the world through our business.</p>
+            <p>Thank you for choosing our organic food products, and I look forward to serving you soon.</p>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-column">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Shipping Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+                <li><a href="#">Cancellation Policy</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Information</a></li>
+                <li><a href="#">Wild Forest Honey Certificate</a></li>
+                <li><a href="#">Dark Forest Honey Certificate</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Info</h3>
+            <p><strong>Trade Name:</strong> VAARADHI FARMS PRIVATE LIMITED</p>
+            <p><strong>Email Support:</strong> vaaradhifarms@gmail.com</p>
+            <p><strong>Customer Care Number:</strong></p>
+            <p>+91 89770 21193</p>
+            <p>+91 89770 21197</p>
+            <p><strong>Customer Support Timings:</strong> 10:30am to 6:30pm</p>
+            <p><strong>Address:</strong> Manikonda, Hyderabad, Telangana, Pin - 500089</p>
+            <p><strong>FSSAI:</strong> 23623028001252</p>
+            <p><strong>Legal Name:</strong> VAARADHI FARMS PRIVATE LIMITED</p>
+            <p><strong>Registered Address:</strong> Building No./Flat No.: Sy. No. 81, Plot No-161, Sector-1, Block-2, Name of Premises/Building: Alkapur Township</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+    
+</body>
+</html>

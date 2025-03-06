@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Favorites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+            border-top: 5px solid #FFC72C;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #333;
+            margin-top: 5px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -40px;
+        }
+        .button {
+            background-color: #FFC72C;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .button:hover {
+            background-color: #E6B800;
+        }
+        .arrow {
+            font-size: 14px;
+        }
+        -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    interpolate-size: allow-keywords;
+    --spacing-0-5: 0.125rem;
+    --spacing-1: 0.25rem;
+    --spacing-1-5: 0.375rem;
+    --spacing-2: 0.5rem;
+    --spacing-2-5: 0.625rem;
+    --spacing-3: 0.75rem;
+    --spacing-3-5: 0.875rem;
+    --spacing-4: 1rem;
+    --spacing-4-5: 1.125rem;
+    --spacing-5: 1.25rem;
+    --spacing-5-5: 1.375rem;
+    --spacing-6: 1.5rem;
+    --spacing-6-5: 1.625rem;
+    --spacing-7: 1.75rem;
+    --spacing-7-5: 1.875rem;
+    --spacing-8: 2rem;
+    --spacing-8-5: 2.125rem;
+    --spacing-9: 2.25rem;
+    --spacing-9-5: 2.375rem;
+    --spacing-10: 2.5rem;
+    --spacing-11: 2.75rem;
+    --spacing-12: 3rem;
+    --spacing-14: 3.5rem;
+    --spacing-16: 4rem;
+    --spacing-18: 4.5rem;
+    --spacing-20: 5rem;
+    --spacing-24: 6rem;
+    --spacing-28: 7rem;
+    --spacing-32: 8rem;
+    --spacing-36: 9rem;
+    --spacing-40: 10rem;
+    --spacing-44: 11rem;
+    --spacing-48: 12rem;
+    --spacing-52: 13rem;
+    --spacing-56: 14rem;
+    --spacing-60: 15rem;
+    --spacing-64: 16rem;
+    --spacing-72: 18rem;
+    --spacing-80: 20rem;
+    --spacing-96: 24rem;
+    --container-max-width: 1600px;
+    --container-narrow-max-width: 1350px;
+    --product-list-column-gap: var(--grid-gutter);
+    --sticky-area-height: calc(var(--sticky-announcement-bar-enabled, 0) * var(--announcement-bar-height, 0px) + var(--sticky-header-enabled, 0) * var(--header-height, 0px));
+    --transform-logical-flip: 1;
+    --transform-origin-start: left;
+    --transform-origin-end: right;
+    --heading-font-family: Poppins, sans-serif;
+    --heading-font-weight: 700;
+    --heading-font-style: normal;
+    --heading-text-transform: normal;
+    --heading-letter-spacing: -0.02em;
+    --text-font-family: Lora, serif;
+    --text-font-weight: 400;
+    --text-font-style: normal;
+    --text-letter-spacing: 0.0em;
+    --accent: 37 105 63;
+    --text-primary: 0 0 0;
+    --background-primary: 255 255 255;
+    --dialog-background: 255 255 255;
+    --border-color: var(--text-color, var(--text-primary)) / 0.12;
+    --button-background-primary: 37 105 63;
+    --button-text-primary: 255 255 255;
+    --button-background-secondary: 37 105 63;
+    --button-text-secondary: 255 255 255;
+    --success-background: 229 237 232;
+    --success-text: 37 105 63;
+    --warning-background: 255 246 233;
+    --warning-text: 255 183 74;
+    --error-background: 254 231 231;
+    --error-text: 248 58 58;
+    --on-sale-text: 248 58 58;
+    --on-sale-badge-background: 248 58 58;
+    --on-sale-badge-text: 255 255 255;
+    --sold-out-badge-background: 0 0 0;
+    --sold-out-badge-text: 255 255 255;
+    --primary-badge-background: 128 60 238;
+    --primary-badge-text: 255 255 255;
+    --star-color: 255 183 74;
+    --product-card-background: 255 255 255;
+    --product-card-text: 26 26 26;
+    --header-background: 248 192 39;
+    --header-text: 0 0 0;
+    --footer-background: 248 192 39;
+    --footer-text: 26 26 26;
+    --rounded-xs: 0.25rem;
+    --rounded-sm: 0.375rem;
+    --rounded: 0.75rem;
+    --rounded-lg: 1.5rem;
+    --rounded-full: 9999px;
+    --rounded-button: 3.75rem;
+    --rounded-input: 0.5rem;
+    --shadow-sm: 0 2px 8px rgb(var(--text-primary) / 0.1);
+    --shadow: 0 5px 15px rgb(var(--text-primary) / 0.1);
+    --shadow-md: 0 5px 30px rgb(var(--text-primary) / 0.1);
+    --shadow-block: 0px 18px 50px rgb(var(--text-primary) / 0.1);
+    --stagger-products-reveal-opacity: 0;
+    --cursor-close-svg-url: url(//vaaradhifarms.com/cdn/shop/t/40/assets/cursor-close.svg?v=147174565022153725511738579249);
+    --cursor-zoom-in-svg-url: url(//vaaradhifarms.com/cdn/shop/t/40/assets/cursor-zoom-in.svg?v=154953035094101115921738579249);
+    --cursor-zoom-out-svg-url: url(//vaaradhifarms.com/cdn/shop/t/40/assets/cursor-zoom-out.svg?v=16155520337305705181738579249);
+    --checkmark-svg-url: url(//vaaradhifarms.com/cdn/shop/t/40/assets/checkmark.svg?v=77552481021870063511738579249);
+    --text-h0: 4rem;
+    --text-h1: 3rem;
+    --text-h2: 2.5rem;
+    --text-h3: 2rem;
+    --text-h4: 1.625rem;
+    --text-h5: 1.25rem;
+    --text-h6: 1.125rem;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.0rem;
+    --text-lg: 1.25rem;
+    --container-gutter: 2rem;
+    --section-outer-spacing-block: var(--spacing-16);
+    --section-inner-max-spacing-block: var(--spacing-12);
+    --section-inner-spacing-inline: var(--spacing-12);
+    --section-stack-spacing-block: var(--spacing-12);
+    --grid-gutter: var(--spacing-6);
+    --product-list-row-gap: var(--spacing-12);
+    --input-gap: 1rem;
+    --input-height: 3.125rem;
+    --input-padding-inline: var(--spacing-5);
+    --jdgm-primary-color: #ffc900;
+    --jdgm-secondary-color: #ffc900;
+    --jdgm-star-color: #ffc900;
+    --jdgm-write-review-text-color: white;
+    --jdgm-write-review-bg-color: #ffc900;
+    --jdgm-paginate-color: #ffc900;
+    --jdgm-border-radius: 0;
+    --sticky-announcement-bar-enabled: 1;
+    --sticky-header-enabled: 1;
+    --announcement-bar-height: 54px;
+    --header-height: 135px;
+    --scrollbar-width: 17px;
+    --header-is-visible: 1;
+    font: var(--text-font-style) var(--text-font-weight) var(--text-base) / 1.6 var(--text-font-family);
+    letter-spacing: var(--text-letter-spacing);
+    --section-is-first: 0;
+    --hash-difference: calc(var(--section-background-hash) - var(--previous-section-background-hash, -1));
+    --hash-difference-abs: max(var(--hash-difference), -1 * var(--hash-difference));
+    --background-differs-from-previous: max(0, min(var(--hash-difference-abs, 1), 1));
+    --section-background-hash: 0;
+    --context-section-spacing-block-start: var(--section-outer-spacing-block);
+    --context-section-spacing-block-end: var(--section-outer-spacing-block);
+    --context-section-spacing-inline: var(--container-gutter);
+    --calculated-section-spacing-block-start: var(--section-spacing-block-start, var(--section-spacing-block, var(--context-section-spacing-block-start)));
+    --calculated-section-spacing-block-end: var(--section-spacing-block-end, var(--section-spacing-block, var(--context-section-spacing-block-end)));
+    --calculated-section-spacing-inline: var(--section-spacing-inline, var(--context-section-spacing-inline));
+    --container-inner-width: min((100vw - var(--scrollbar-width, 0px)) - var(--calculated-section-spacing-inline, 0px) * 2, var(--container-max-width));
+    --container-outer-width: calc(((100vw - var(--scrollbar-width, 0px)) - var(--container-inner-width, 0px)) / 2);
+    --section-stack-spacing-inline: var(--section-inner-spacing-inline, 0px);
+    --product-list-grid: auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr));
+    --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+    --product-list-items-per-row: 2;
+    --product-list-carousel-item-width: 36vw;
+    --product-card-badge-spacing: var(--spacing-4);
+    --product-card-info-padding: var(--spacing-5);
+    --product-card-quick-buy-inset: var(--spacing-4);
+    --background: 255 255 255;
+    --text-color: 26 26 26;
+    width: 1280px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0;
+    border-color: rgb(var(--text-color) / .12);
+    vertical-align: middle;
+    display: block;
+    color: #0000;
+    height: auto;
+    max-width: min(var(--image-max-width, 100%),100%);
+    transition: opacity .2s ease-in-out;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: var(--rounded-sm);
+    border-top-right-radius: var(--rounded-sm);
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Shop Our Customers Favorite</h1>
+        <p class="subtitle">These are Our Best Sellers You’ll Fall in Love With Too</p>
+        <div class="button-container">
+            <button class="button">View All <span class="arrow">&#9654;</span></button>
+        </div>
+    </div>
+</body>
+</html>
